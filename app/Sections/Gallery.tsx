@@ -1,10 +1,10 @@
-"use client";
-import { register } from "swiper/element/bundle";
-import Image from "next/image";
-import type { SwiperOptions } from "swiper/types";
-import type { SwiperContainer } from "swiper/element/bundle";
-import { useEffect, useRef, useState } from "react";
-import useMediaQuery from "../hooks/useMediaQuery";
+'use client';
+import { register } from 'swiper/element/bundle';
+import Image from 'next/image';
+import type { SwiperOptions } from 'swiper/types';
+import type { SwiperContainer } from 'swiper/element/bundle';
+import { useEffect, useRef, useState } from 'react';
+import useMediaQuery from '../hooks/useMediaQuery';
 
 const defaultParams = {};
 
@@ -22,32 +22,32 @@ const effectBreakpoints = {
   768: {
     prev: {
       shadow: true,
-      translate: ["70%", 0, 0],
+      translate: ['70%', 0, 0],
       scale: 0.293,
     },
     next: {
       shadow: true,
-      translate: ["-70%", 0, 0],
+      translate: ['-70%', 0, 0],
       scale: 0.293,
     },
   },
   1280: {
     prev: {
       shadow: true,
-      translate: ["80%", 0, 0],
+      translate: ['80%', 0, 0],
       scale: 0.515,
     },
     next: {
       shadow: true,
-      translate: ["-80%", 0, 0],
+      translate: ['-80%', 0, 0],
       scale: 0.515,
     },
   },
 };
 
 export default function Gallery() {
-  const isTablet = useMediaQuery("(min-width: 768px)");
-  const isDesktop = useMediaQuery("(min-width: 1280px)");
+  const isTablet = useMediaQuery('(min-width: 768px)');
+  const isDesktop = useMediaQuery('(min-width: 1280px)');
 
   const [swiperInit, setSwiperInit] = useState(false);
 
@@ -61,16 +61,16 @@ export default function Gallery() {
       initialSlide: 2,
       loop: true,
       centeredSlides: true,
-      effect: "creative",
+      effect: 'creative',
       navigation: {
-        prevEl: ".gallery-button-next",
-        nextEl: ".gallery-button-prev",
+        prevEl: '.gallery-button-next',
+        nextEl: '.gallery-button-prev',
       },
       creativeEffect: {
         ...effectBreakpoints[breakPoint],
       },
-      slidesPerView: "auto",
-      direction: "horizontal",
+      slidesPerView: 'auto',
+      direction: 'horizontal',
       on: {
         init: () => {
           setSwiperInit(true);
@@ -79,7 +79,7 @@ export default function Gallery() {
       breakpoints: {
         768: {
           centeredSlides: true,
-          direction: "horizontal",
+          direction: 'horizontal',
           creativeEffect: {
             ...effectBreakpoints[768],
           },
@@ -104,21 +104,21 @@ export default function Gallery() {
   return (
     <section
       id="gallery"
-      className="bgSection bg-opacity-[.85] bg-gallery relative pb-14 pt-14"
+      className="bgSection relative bg-opacity-[.85] bg-gallery pb-14 pt-14"
     >
       <div className="container relative z-0">
-        <h1 className="font-thin mb-[24px] text-xl4 tracking-[-1.6px] text-white md:text-[67px] md:tracking-[-2.68px] xl:text-[98px] xl:tracking-[-3.92px]">
+        <h2 className="mb-[24px] text-xl4 font-thin tracking-[-1.6px] text-white md:text-[67px] md:tracking-[-2.68px] xl:text-[98px] xl:tracking-[-3.92px]">
           OUR <span className="font-medium">GALLERY</span>
-        </h1>
+        </h2>
         <div className="relative h-[610px] md:h-[294px] xl:h-[429px]">
           <swiper-container
             init="false"
-            class="opacity-0 h-0 pointer-events-none invisible md:visible md:opacity-100 md:pointer-events-auto swiper-gallery md:h-full w-hull"
+            class="swiper-gallery w-hull pointer-events-none invisible h-0 opacity-0 md:pointer-events-auto md:visible md:h-full md:opacity-100"
             ref={swiperRef}
           >
-            <swiper-slide class="mx-auto md:mx-0 w-[280px] h-[187px] md:w-[415px] md:h-[294px] xl:w-[609px] xl:h-full">
+            <swiper-slide class="mx-auto h-[187px] w-[280px] md:mx-0 md:h-[294px] md:w-[415px] xl:h-full xl:w-[609px]">
               <Image
-                className="object-cover w-full h-full text-center"
+                className="h-full w-full object-cover text-center"
                 src="/gallery1-1280.jpg"
                 alt=""
                 width={1212}
@@ -126,9 +126,9 @@ export default function Gallery() {
                 quality={100}
               />
             </swiper-slide>
-            <swiper-slide class="mx-auto md:mx-0 w-[280px] h-[187px] md:w-[415px] md:h-[294px] xl:w-[609px] xl:h-full">
+            <swiper-slide class="mx-auto h-[187px] w-[280px] md:mx-0 md:h-[294px] md:w-[415px] xl:h-full xl:w-[609px]">
               <Image
-                className="object-cover w-full h-full"
+                className="h-full w-full object-cover"
                 src="/gallery2-1280.jpg"
                 alt=""
                 width={1212}
@@ -136,9 +136,9 @@ export default function Gallery() {
                 quality={100}
               />
             </swiper-slide>
-            <swiper-slide class="mx-auto md:mx-0 w-[280px] h-[187px] md:w-[415px] md:h-[294px] xl:w-[609px] xl:h-full">
+            <swiper-slide class="mx-auto h-[187px] w-[280px] md:mx-0 md:h-[294px] md:w-[415px] xl:h-full xl:w-[609px]">
               <Image
-                className="object-cover w-full h-full"
+                className="h-full w-full object-cover"
                 src="/gallery3-1280.jpg"
                 alt=""
                 width={1212}
@@ -150,14 +150,14 @@ export default function Gallery() {
 
           {/** Mobile gallery */}
           <swiper-container
-            class="block md:hidden h-full w-full"
+            class="block h-full w-full md:hidden"
             slides-per-view="3"
             direction="vertical"
             space-between="24"
           >
-            <swiper-slide class="mx-auto w-full max-w-[280px] h-[187px]">
+            <swiper-slide class="mx-auto h-[187px] w-full max-w-[280px]">
               <Image
-                className="object-cover w-full h-full text-center"
+                className="h-full w-full object-cover text-center"
                 src="/gallery1-1280.jpg"
                 alt=""
                 width={1212}
@@ -165,9 +165,9 @@ export default function Gallery() {
                 quality={100}
               />
             </swiper-slide>
-            <swiper-slide class="mx-auto w-full max-w-[280px] h-[187px]">
+            <swiper-slide class="mx-auto h-[187px] w-full max-w-[280px]">
               <Image
-                className="object-cover w-full h-full"
+                className="h-full w-full object-cover"
                 src="/gallery2-1280.jpg"
                 alt=""
                 width={1212}
@@ -175,9 +175,9 @@ export default function Gallery() {
                 quality={100}
               />
             </swiper-slide>
-            <swiper-slide class="mx-auto w-full max-w-[280px] h-[187px]">
+            <swiper-slide class="mx-auto h-[187px] w-full max-w-[280px]">
               <Image
-                className="object-cover w-full h-full"
+                className="h-full w-full object-cover"
                 src="/gallery3-1280.jpg"
                 alt=""
                 width={1212}
@@ -188,11 +188,11 @@ export default function Gallery() {
           </swiper-container>
 
           {/** Navigation */}
-          <div className="hidden md:flex justify-center gap-x-[440px] xl:gap-x-[657px] absolute w-full bottom-0 z-10">
-            <button className="gallery-button-prev text-white font-thin text-[33px]">
+          <div className="absolute bottom-0 z-10 hidden w-full justify-center gap-x-[440px] md:flex xl:gap-x-[657px]">
+            <button className="gallery-button-prev text-[33px] font-thin text-white">
               BACK
             </button>
-            <button className="gallery-button-next text-white font-thin text-[33px]">
+            <button className="gallery-button-next text-[33px] font-thin text-white">
               NEXT
             </button>
           </div>

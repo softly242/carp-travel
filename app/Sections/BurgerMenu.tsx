@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 interface BurgeMenuProps {
   visible?: boolean;
@@ -11,11 +11,11 @@ export default function BurgerMenu({ visible, handleClose }: BurgeMenuProps) {
     <div
       aria-hidden={!visible}
       aria-expanded={visible}
-      className={`bg-[rgba(1,10,5,0.75)] overflow-y-auto fixed inset-x-0 top-0 left-0 h-full transition duration-250 z-50 backdrop-blur-xl ${
-        visible ? "" : "translate-x-[calc(100vw)] opacity-0"
+      className={`duration-250 fixed inset-x-0 left-0 top-0 z-50 h-full overflow-y-auto bg-[rgba(1,10,5,0.75)] backdrop-blur-xl transition ${
+        visible ? '' : 'translate-x-[calc(100vw)] opacity-0'
       }`}
     >
-      <div className="container text-right mt-[43px] text-sm font-normal mb-[110px]">
+      <div className="container mb-[110px] mt-[43px] text-right text-sm font-normal">
         <button
           type="submit"
           className="tracking-[1.4px]"
@@ -25,7 +25,7 @@ export default function BurgerMenu({ visible, handleClose }: BurgeMenuProps) {
         </button>
       </div>
 
-      <ul className="block text-center mb-[170px] ">
+      <ul className="mb-[170px] block text-center ">
         <li
           className="mb-12 text-lg font-normal tracking-[1.8px]"
           onClick={handleLinkClick}

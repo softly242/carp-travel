@@ -45,7 +45,6 @@ export default function Header() {
             <Link href="#contacts">Contacts</Link>
           </li>
         </ul>
-
         <button
           onClick={handleMenuClick}
           type="submit"

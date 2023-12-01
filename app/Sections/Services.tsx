@@ -1,8 +1,8 @@
-"use client";
-import Image from "next/image";
-import { useCallback, useEffect, useState } from "react";
-import { DataType } from "../(server)/api/data";
-import { register } from "swiper/element/bundle";
+'use client';
+import Image from 'next/image';
+import { useCallback, useEffect, useState } from 'react';
+import { DataType } from '../(server)/api/data';
+import { register } from 'swiper/element/bundle';
 
 register();
 
@@ -11,7 +11,7 @@ export default function Services() {
   const [page, setPage] = useState<number>(1);
 
   useEffect(() => {
-    fetch("/api")
+    fetch('/api')
       .then((x) => x.json())
       .then(setAllData);
   }, []);
@@ -22,7 +22,7 @@ export default function Services() {
 
   const handlePageChange = (page: number) => {
     setPage(page);
-    const swiperEl = document.querySelector("swiper-container");
+    const swiperEl = document.querySelector('swiper-container');
     swiperEl && swiperEl.swiper.slideTo(page - 1);
   };
 
@@ -31,17 +31,17 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="bgSection bg-opacity-50 pt-[54px] pb-14 relative md:pb-16 md:pt-16 xl:pt-[104px] xl:pb-[104px]"
+      className="bgSection relative bg-opacity-50 pb-14 pt-[54px] md:pb-16 md:pt-16 xl:pb-[104px] xl:pt-[104px]"
     >
       <div className="bgGradien"></div>
-      <div className="absolute z-[-1] w-full h-full top-0 left-0 overflow-hidden">
-        <swiper-container effect="fade" class="w-full h-full">
+      <div className="absolute left-0 top-0 z-[-1] h-full w-full overflow-hidden">
+        <swiper-container effect="fade" class="h-full w-full">
           {allData.length &&
             allData.map(({ backgroundUrl }: DataType[number], index) => {
               return (
                 <swiper-slide key={index} className="h-full w-full">
                   <Image
-                    className="object-cover w-full h-full"
+                    className="h-full w-full object-cover"
                     src={backgroundUrl}
                     alt=""
                     width={2880}
@@ -55,11 +55,11 @@ export default function Services() {
         </swiper-container>
       </div>
       <div className="container relative">
-        <div className="md:flex md:mb-10 xl:mb-5 items-center justify-between xl:justify-start xl:gap-[162px]">
-          <h1 className="font-thin mb-[24px] whitespace-nowrap text-xl4 tracking-[-1.6px] md:text-[67px] md:mb-0 md:tracking-[-2.68px] xl:text-[98px] xl:tracking-[-3.92px] xl:mb-[20px]">
+        <div className="items-center justify-between md:mb-10 md:flex xl:mb-5 xl:justify-start xl:gap-[162px]">
+          <h2 className="mb-[24px] whitespace-nowrap text-xl4 font-thin tracking-[-1.6px] md:mb-0 md:text-[67px] md:tracking-[-2.68px] xl:mb-[20px] xl:text-[98px] xl:tracking-[-3.92px]">
             WE <span className="font-medium">OFFER</span>
-          </h1>
-          <span className="text-[43px] font-thin flex justify-end mb-[13px] md:text-[67px] md:leading-[78px] xl:text-[98px]">
+          </h2>
+          <span className="mb-[13px] flex justify-end text-[43px] font-thin md:text-[67px] md:leading-[78px] xl:text-[98px]">
             <span>{formatNumber(page)}/</span>
             <span className="opacity-30">
               {formatNumber(allData.length || 0)}
@@ -73,10 +73,10 @@ export default function Services() {
               const { number, image, titleCall, title } = content;
               return (
                 <div key={i} className="">
-                  <div className="md:flex md:gap-5 md:h-[370px] xl:h-[429px]">
-                    <div className="md:w-[463px] xl:w-[609px] w-full h-full">
+                  <div className="md:flex md:h-[370px] md:gap-5 xl:h-[429px]">
+                    <div className="h-full w-full md:w-[463px] xl:w-[609px]">
                       <Image
-                        className="object-cover w-full h-full mb-[12px] md:mb-0"
+                        className="mb-[12px] h-full w-full object-cover md:mb-0"
                         src={image}
                         alt="image"
                         width={1214}
@@ -87,7 +87,7 @@ export default function Services() {
                     </div>
                     <div className="flex-grow flex-col md:flex md:w-[221px] xl:w-fit">
                       <div className="md:flex md:flex-col-reverse xl:flex-row-reverse">
-                        <p className="flex-grow text-xs font-extralight leading-6 tracking-[2.4px] text-right mb-[24px] md:mb-[34px] md:flex md:mt-[9px] xl:flex xl:mt-0 xl:mb-0 xl:ml-[59px] xl:text-left">
+                        <p className="mb-[24px] flex-grow text-right text-xs font-extralight leading-6 tracking-[2.4px] md:mb-[34px] md:mt-[9px] md:flex xl:mb-0 xl:ml-[59px] xl:mt-0 xl:flex xl:text-left">
                           {titleCall}
                         </p>
 
@@ -100,13 +100,13 @@ export default function Services() {
                                 onClick={() => handlePageChange(index + 1)}
                                 className={`${
                                   isActive
-                                    ? "font-medium "
-                                    : "opacity-50 font-extralight"
-                                } flex items-center cursor-pointer leading-4 uppercase text-xl transition hover:opacity-100 mb-[16px] md:text-[22px] md:leading-[18px] xl:text-[28px] xl:leading-6 xl:mb-6`}
+                                    ? 'font-medium '
+                                    : 'font-extralight opacity-50'
+                                } mb-[16px] flex cursor-pointer items-center text-xl uppercase leading-4 transition hover:opacity-100 md:text-[22px] md:leading-[18px] xl:mb-6 xl:text-[28px] xl:leading-6`}
                               >
                                 <span
-                                  className={`inline-block w-[6px] h-[6px] rotate-45 bg-white mr-2 ${
-                                    isActive ? "" : "hidden"
+                                  className={`mr-2 inline-block h-[6px] w-[6px] rotate-45 bg-white ${
+                                    isActive ? '' : 'hidden'
                                   }`}
                                 ></span>
                                 {item}
@@ -115,7 +115,7 @@ export default function Services() {
                           })}
                         </ul>
                       </div>
-                      <p className="text-sm xl:text-justify font-extralight leading-5 pt-[18px] md:pt-0 md:text-[13px] xl:text-lg xl:leading-6 xl:w-[293px] xl:ml-auto md:mt-auto">
+                      <p className="pt-[18px] text-sm font-extralight leading-5 md:mt-auto md:pt-0 md:text-[13px] xl:ml-auto xl:w-[293px] xl:text-justify xl:text-lg xl:leading-6">
                         {title}
                       </p>
                     </div>
